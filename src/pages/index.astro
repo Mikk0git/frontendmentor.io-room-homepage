@@ -15,12 +15,23 @@ import Attribution from "../components/Attribution.astro";
     <About />
   </main>
   <Attribution />
-  <style>
+  <style is:global>
     main {
       color: var(--fm-black);
       display: grid;
       grid-template-columns: repeat(24, 1fr);
-      /* gap: 2rem; */
+    }
+
+    p {
+      font-size: 15px;
+      color: var(--fm-very-dark-gray);
+      font-weight: 500;
+    }
+    h2 {
+      line-height: 4px;
+      font-weight: 500;
+      font-size: large;
+      letter-spacing: 5px;
     }
   </style>
 </Layout>
