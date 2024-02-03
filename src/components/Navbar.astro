@@ -1,8 +1,7 @@
----
-
----
-
-<nav>
+<nav id="navbar">
+  <div id="navbarLogo">
+    <img src="/logo.svg" alt="room" />
+  </div>
   <ul>
     <li>Home</li>
     <li>Shop</li>
@@ -10,3 +9,12 @@
     <li>Contact</li>
   </ul>
 </nav>
+
+<style>
+  #navbar {
+    grid-column: 1/13;
+    grid-row: 1;
+    z-index: 10;
+    height: 100%;
+  }
+</style>
