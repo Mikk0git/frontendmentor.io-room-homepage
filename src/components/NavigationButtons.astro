@@ -1,0 +1,48 @@
+<div id="navigationButtons">
+  <a id="backButton" class="navigationButton" href="/">
+    <img src="/public/icons/icon-angle-left.svg" alt="" />
+  </a>
+  <a id="forwardButton" class="navigationButton" href="/">
+    <img src="/public/icons/icon-angle-right.svg" alt="" />
+  </a>
+</div>
+
+<style>
+  #navigationButtons {
+    grid-column: 18/25 span;
+    grid-row: 1/1;
+    align-self: flex-end;
+    background-color: var(--fm-black);
+    height: 15%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .navigationButton {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navigationButton img {
+    height: 30%;
+  }
+  .navigationButton:hover {
+    background-color: var(--fm-very-dark-gray);
+  }
+  @media (min-width: 750px) {
+    #navigationButtons {
+      grid-column: 12/15;
+    }
+  }
+
+  @media (min-width: 1300px) {
+    #navigationButtons {
+      grid-column: 15/18;
+    }
+  }
+</style>
