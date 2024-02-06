@@ -6,8 +6,7 @@ export default function Navbar() {
   const [opacityValue, setOpacityValue] = useState(0);
   const [backgroundColorValue, setBackgroundColorValue] =
     useState("rgba(0, 0, 0, 0)");
-  const [displayValue, setDisplayValue] = useState();
-  const [displayValueReverse, setDisplayValueReverse] = useState();
+  const [displayValue, setDisplayValue] = useState<string>();
   const [windowSize, setWindowSize] = useState(getWindowSize());
 
   useEffect(() => {
@@ -81,7 +80,7 @@ export default function Navbar() {
           </li>
         </>
       </ul>
-      {!isButtonCLicked ? (
+      {!isButtonCLicked || windowSize.innerWidth > 750 ? (
         <div className={styles.navbarElement} id={styles.navbarLogo}>
           <a href="/">
             <img src="/logo.svg" alt="room" />
