@@ -45,7 +45,7 @@ export default function Navbar() {
     } else {
       setIsButtonCLicked(true);
     }
-    console.log("Button clicked " + isButtonCLicked);
+    // console.log("Button clicked " + isButtonCLicked);
   };
 
   return (
