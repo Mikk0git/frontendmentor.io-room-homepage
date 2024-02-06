@@ -8,6 +8,8 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   align-items: center;
+  /* gap: 1rem; */
+  /* justify-items: center; */
 
   background-color: rgba(0, 0, 0, 0);
   transition: background-color 0.3s;
@@ -39,23 +41,22 @@ a:active {
   text-decoration: none;
   color: var(--black);
 }
-#hamburgerButton {
-  grid-column: 1/1;
-  grid-row: 1/1;
-}
-#navbarLogo {
-  grid-column: 6/8;
-  grid-row: 1/1;
-  display: flex;
-  justify-content: center;
-}
-#closeButton {
+#navbarButton {
   grid-column: 1/1;
   grid-row: 1/1;
 }
 
+#navbarLogo {
+  grid-column: 2/12;
+  justify-self: center;
+  grid-row: 1/1;
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+}
+
 #navbarList {
-  grid-column: 4/13;
+  grid-column: -1;
   grid-row: 1/1;
 
   display: flex;
@@ -65,4 +66,22 @@ a:active {
 
   opacity: 0;
   transition: opacity 0.3s;
+}
+
+@media (min-width: 750px) {
+  #navbarList {
+    opacity: 1;
+    color: var(--fm-white);
+    grid-column: 2/5;
+    display: flex !important;
+    justify-self: left;
+  }
+
+  #navbarLogo {
+    grid-column: 1/1;
+  }
+
+  #navbarButton {
+    display: none;
+  }
 }

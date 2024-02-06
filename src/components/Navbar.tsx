@@ -1,20 +1,43 @@
-import React, { useState, useEffect } from "react";
-import styles from "./Navbar.module.css"; // Import the styles object
+import React, { useState, useEffect, useRef } from "react";
+import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [isButtonCLicked, setIsButtonCLicked] = useState(false);
   const [opacityValue, setOpacityValue] = useState(0);
   const [backgroundColorValue, setBackgroundColorValue] =
     useState("rgba(0, 0, 0, 0)");
+  const [displayValue, setDisplayValue] = useState();
+  const [displayValueReverse, setDisplayValueReverse] = useState();
+  const [windowSize, setWindowSize] = useState(getWindowSize());
 
   useEffect(() => {
-    setOpacityValue(isButtonCLicked ? 1 : 0);
-  }, [isButtonCLicked]);
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+      // console.log("Window width " + windowSize.innerWidth);
+      // console.log("Window height " + windowSize.innerHeight);
+    }
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
 
   useEffect(() => {
-    setBackgroundColorValue(isButtonCLicked ? "white" : "rgba(0, 0, 0, 0)");
-    console.log("Background color " + backgroundColorValue);
-  }, [isButtonCLicked]);
+    if (windowSize.innerWidth < 750) {
+      setOpacityValue(isButtonCLicked ? 1 : 0);
+      setDisplayValue(isButtonCLicked ? "flex" : "none");
+    } else setOpacityValue(1);
+  }, [isButtonCLicked, windowSize.innerWidth]);
+
+  useEffect(() => {
+    if (windowSize.innerWidth < 750) {
+      setBackgroundColorValue(isButtonCLicked ? "white" : "rgba(0, 0, 0, 0)");
+    } else {
+      setBackgroundColorValue("rgba(0, 0, 0, 0)");
+    }
+  }, [isButtonCLicked, windowSize.innerWidth]);
 
   const handleButtonClick = () => {
     if (isButtonCLicked) {
@@ -38,42 +61,38 @@ export default function Navbar() {
           <img src="/icons/icon-hamburger.svg" alt="" />
         )}
       </button>
-
       <ul
         className={styles.navbarElement}
         id={styles.navbarList}
-        style={{ opacity: opacityValue }}
+        style={{ opacity: opacityValue, display: displayValue }}
       >
-        {isButtonCLicked ? (
-          <>
-            <li>
-              <a href="/"> home</a>
-            </li>
-            <li>
-              <a href="/shop">shop</a>
-            </li>
-            <li>
-              <a href="#aboutText">about</a>
-            </li>
-            <li>
-              <a href="/contact">contact</a>
-            </li>
-          </>
-        ) : (
-          //it may be stupid but it works
-          <>
-            <li>home</li>
-            <li>shop</li>
-            <li>about</li>
-            <li>contact</li>
-          </>
-        )}
+        <>
+          <li>
+            <a href="/"> home</a>
+          </li>
+          <li>
+            <a href="/shop">shop</a>
+          </li>
+          <li>
+            <a href="#aboutText">about</a>
+          </li>
+          <li>
+            <a href="/contact">contact</a>
+          </li>
+        </>
       </ul>
-      <div className={styles.navbarElement} id={styles.navbarLogo}>
-        <a href="/">
-          <img src="/logo.svg" alt="room" />
-        </a>
-      </div>
+      {!isButtonCLicked ? (
+        <div className={styles.navbarElement} id={styles.navbarLogo}>
+          <a href="/">
+            <img src="/logo.svg" alt="room" />
+          </a>
+        </div>
+      ) : null}
     </nav>
   );
+}
+
+function getWindowSize() {
+  const { innerWidth, innerHeight } = window;
+  return { innerWidth, innerHeight };
 }
