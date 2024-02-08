@@ -23,7 +23,6 @@
     grid-column: 15/25;
   }
   #heroImage {
-    content: url("/images/desktop-image-hero-1.jpg");
     max-height: 450px;
   }
 }

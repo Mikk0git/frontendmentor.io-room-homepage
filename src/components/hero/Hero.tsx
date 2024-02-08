@@ -1,10 +1,42 @@
+import { useState } from "react";
 import NavigationButtons from "../navigationButtons/NavigationButtons.tsx";
+import HeroImageCarousel from "./HeroImageCarousel.tsx";
+import useWindowResize from "../../hooks/useWindowResize";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  useWindowResize();
+
+  const totalImages = 3;
+  const imageSourcesMobile = [
+    "/images/mobile-image-hero-1.jpg",
+    "/images/mobile-image-hero-2.jpg",
+    "/images/mobile-image-hero-3.jpg",
+  ];
+  const imageSourcesDesktop = [
+    "/images/desktop-image-hero-1.jpg",
+    "/images/desktop-image-hero-2.jpg",
+    "/images/desktop-image-hero-3.jpg",
+  ];
+  const imageSources =
+    window.innerWidth > 750 ? imageSourcesDesktop : imageSourcesMobile;
+
+  const handleNextImage = () => {
+    setCurrentImageIndex((currentImageIndex + 1) % totalImages);
+  };
+
+  const handlePreviousImage = () => {
+    setCurrentImageIndex((currentImageIndex - 1 + totalImages) % totalImages);
+  };
+
   return (
     <>
-      <img id={styles.heroImage} src="/images/mobile-image-hero-1.jpg" alt="" />
+      <HeroImageCarousel
+        currentImageIndex={currentImageIndex}
+        imageSources={imageSources}
+      />
+
       <div id={styles.heroText}>
         <h1>Discover innovative ways to decorate</h1>
         <p>
@@ -16,7 +48,10 @@ export default function Hero() {
         </p>
         <a href="/shop">Shop now</a>
       </div>
-      <NavigationButtons />
+      <NavigationButtons
+        onNext={handleNextImage}
+        onPrev={handlePreviousImage}
+      />
     </>
   );
 }
