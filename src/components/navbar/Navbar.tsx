@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./Navbar.module.css";
+import useWindowResize from "../../hooks/useWindowResize";
 
 export default function Navbar() {
   const [isButtonCLicked, setIsButtonCLicked] = useState(false);
@@ -7,21 +8,9 @@ export default function Navbar() {
   const [backgroundColorValue, setBackgroundColorValue] =
     useState("rgba(0, 0, 0, 0)");
   const [displayValue, setDisplayValue] = useState<string>();
-  const [windowSize, setWindowSize] = useState(getWindowSize());
+  // const [windowSize, setWindowSize] = useState(getWindowSize());
 
-  useEffect(() => {
-    function handleWindowResize() {
-      setWindowSize(getWindowSize());
-      // console.log("Window width " + windowSize.innerWidth);
-      // console.log("Window height " + windowSize.innerHeight);
-    }
-
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  }, []);
+  const windowSize = useWindowResize();
 
   useEffect(() => {
     if (windowSize.innerWidth < 750) {
@@ -89,9 +78,4 @@ export default function Navbar() {
       ) : null}
     </nav>
   );
-}
-
-function getWindowSize() {
-  const { innerWidth, innerHeight } = window;
-  return { innerWidth, innerHeight };
 }
