@@ -37,7 +37,7 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({
       >
         <img
           src={`${import.meta.env.BASE_URL}/icons/icon-angle-left.svg`}
-          alt=""
+          alt="<"
         />
       </button>
       <button
@@ -45,7 +45,10 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({
         className={styles.navigationButton}
         onClick={onNext}
       >
-        <img src="/icons/icon-angle-right.svg" alt="" />
+        <img
+          src={`${import.meta.env.BASE_URL}/icons/icon-angle-right.svg`}
+          alt=">"
+        />
       </button>
     </div>
   );
