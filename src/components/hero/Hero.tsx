@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavigationButtons from "../navigationButtons/NavigationButtons.tsx";
 import HeroImageCarousel from "./HeroImageCarousel.tsx";
 import useWindowResize from "../../hooks/useWindowResize";
@@ -29,6 +29,13 @@ export default function Hero() {
   const handlePreviousImage = () => {
     setCurrentImageIndex((currentImageIndex - 1 + totalImages) % totalImages);
   };
+
+  useEffect(() => {
+    const intervalId = setInterval(handleNextImage, 5000);
+
+    // Clear the interval when the component is unmounted
+    return () => clearInterval(intervalId);
+  }, [currentImageIndex]); // Run effect whenever currentImageIndex changes
 
   return (
     <>
