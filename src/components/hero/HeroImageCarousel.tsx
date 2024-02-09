@@ -1,3 +1,4 @@
+import React, { useRef, useEffect } from "react";
 import styles from "./Hero.module.css";
 
 interface HeroImageCarouselProps {
@@ -9,13 +10,27 @@ const HeroImageCarousel: React.FC<HeroImageCarouselProps> = ({
   currentImageIndex,
   imageSources,
 }) => {
-  imageSources;
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      const scrollPosition =
+        currentImageIndex * carouselRef.current.clientWidth;
+      carouselRef.current.scrollLeft = scrollPosition;
+    }
+  }, [currentImageIndex]);
+
   return (
-    <img
-      id={styles.heroImage}
-      src={imageSources[currentImageIndex]}
-      alt={`Hero Image ${currentImageIndex + 1}`}
-    />
+    <div id={styles.imageCarousel} ref={carouselRef}>
+      {imageSources.map((src, index) => (
+        <img
+          key={index}
+          className={styles.heroImage}
+          src={src}
+          alt={`Hero Image ${index + 1}`}
+        />
+      ))}
+    </div>
   );
 };
 
