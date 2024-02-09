@@ -33,9 +33,8 @@ export default function Hero() {
   useEffect(() => {
     const intervalId = setInterval(handleNextImage, 5000);
 
-    // Clear the interval when the component is unmounted
     return () => clearInterval(intervalId);
-  }, [currentImageIndex]); // Run effect whenever currentImageIndex changes
+  }, [currentImageIndex]);
 
   return (
     <>

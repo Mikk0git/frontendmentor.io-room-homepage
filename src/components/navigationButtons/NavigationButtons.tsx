@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./NavigationButtons.module.css";
 
 interface NavigationButtonsProps {
@@ -10,6 +10,24 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({
   onNext,
   onPrev,
 }) => {
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        // console.log("Left arrow key pressed!");
+        onPrev();
+      } else if (event.key === "ArrowRight") {
+        // console.log("Right arrow key pressed!");
+        onNext();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onNext, onPrev]);
+
   return (
     <div id={styles.navigationButtons}>
       <button
