@@ -44,9 +44,15 @@ export default function Navbar() {
         onClick={handleButtonClick}
       >
         {isButtonCLicked ? (
-          <img src="/icons/icon-close.svg" alt="" />
+          <img
+            src={`${import.meta.env.BASE_URL}/icons/icon-close.svg`}
+            alt=""
+          />
         ) : (
-          <img src="/icons/icon-hamburger.svg" alt="" />
+          <img
+            src={`${import.meta.env.BASE_URL}/icons/icon-hamburger.svg`}
+            alt=""
+          />
         )}
       </button>
       <ul
@@ -70,7 +76,7 @@ export default function Navbar() {
       {!isButtonCLicked || windowSize.innerWidth > 750 ? (
         <div className={styles.navbarElement} id={styles.navbarLogo}>
           <a href="/">
-            <img src="/logo.svg" alt="room" />
+            <img src={`${import.meta.env.BASE_URL}/logo.svg`} alt="room" />
           </a>
         </div>
       ) : null}

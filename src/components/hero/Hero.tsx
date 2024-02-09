@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import NavigationButtons from "../navigationButtons/NavigationButtons.tsx";
 import HeroImageCarousel from "./HeroImageCarousel.tsx";
 import useWindowResize from "../../hooks/useWindowResize";
-import styles from "./Hero.module.css";
 import HeroText from "./HeroText.tsx";
 
 export default function Hero() {
@@ -11,14 +10,14 @@ export default function Hero() {
 
   const totalImages = 3;
   const imageSourcesMobile = [
-    "/images/mobile-image-hero-1.jpg",
-    "/images/mobile-image-hero-2.jpg",
-    "/images/mobile-image-hero-3.jpg",
+    `${import.meta.env.BASE_URL}/images/mobile-image-hero-1.jpg`,
+    `${import.meta.env.BASE_URL}/images/mobile-image-hero-2.jpg`,
+    `${import.meta.env.BASE_URL}/images/mobile-image-hero-3.jpg`,
   ];
   const imageSourcesDesktop = [
-    "/images/desktop-image-hero-1.jpg",
-    "/images/desktop-image-hero-2.jpg",
-    "/images/desktop-image-hero-3.jpg",
+    `${import.meta.env.BASE_URL}/images/desktop-image-hero-1.jpg`,
+    `${import.meta.env.BASE_URL}/images/desktop-image-hero-2.jpg`,
+    `${import.meta.env.BASE_URL}/images/desktop-image-hero-3.jpg`,
   ];
 
   const imageSources =

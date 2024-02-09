@@ -35,7 +35,10 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({
         className={styles.navigationButton}
         onClick={onPrev}
       >
-        <img src="/icons/icon-angle-left.svg" alt="" />
+        <img
+          src={`${import.meta.env.BASE_URL}/icons/icon-angle-left.svg`}
+          alt=""
+        />
       </button>
       <button
         id={styles.forwardButton}

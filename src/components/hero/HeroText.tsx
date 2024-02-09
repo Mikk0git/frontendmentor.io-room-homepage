@@ -19,9 +19,15 @@ const HeroText: React.FC<HeroTextProps> = ({ title, text }) => {
       >
         SHOP NOW{" "}
         {hover ? (
-          <img src="/icons/icon-arrow-dark-gray.svg" alt="" />
+          <img
+            src={`${import.meta.env.BASE_URL}/icons/icon-arrow-dark-gray.svg`}
+            alt=""
+          />
         ) : (
-          <img src="/icons/icon-arrow-black.svg" alt="" />
+          <img
+            src={`${import.meta.env.BASE_URL}/icons/icon-arrow-black.svg`}
+            alt=""
+          />
         )}
       </a>
     </div>
