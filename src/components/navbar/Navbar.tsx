@@ -54,20 +54,18 @@ export default function Navbar() {
         id={styles.navbarList}
         style={{ opacity: opacityValue, display: displayValue }}
       >
-        <>
-          <li>
-            <a href="/"> home</a>
-          </li>
-          <li>
-            <a href="/shop">shop</a>
-          </li>
-          <li>
-            <a href="#aboutText">about</a>
-          </li>
-          <li>
-            <a href="/contact">contact</a>
-          </li>
-        </>
+        <li>
+          <a href="/"> home</a>
+        </li>
+        <li>
+          <a href="/shop">shop</a>
+        </li>
+        <li>
+          <a href="#aboutText">about</a>
+        </li>
+        <li>
+          <a href="/contact">contact</a>
+        </li>
       </ul>
       {!isButtonCLicked || windowSize.innerWidth > 750 ? (
         <div className={styles.navbarElement} id={styles.navbarLogo}>
