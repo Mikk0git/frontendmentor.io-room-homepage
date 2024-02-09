@@ -30,6 +30,16 @@
   background-color: var(--fm-white);
 }
 
+.shopLink {
+  letter-spacing: 10px;
+  font-weight: 500;
+}
+
+.shopLink:hover {
+  color: var(--fm-dark-gray);
+  fill: green;
+}
+
 @media (min-width: 750px) {
   #heroText {
     grid-row: 1;
