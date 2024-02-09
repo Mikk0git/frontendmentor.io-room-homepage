@@ -3,6 +3,7 @@ import NavigationButtons from "../navigationButtons/NavigationButtons.tsx";
 import HeroImageCarousel from "./HeroImageCarousel.tsx";
 import useWindowResize from "../../hooks/useWindowResize";
 import styles from "./Hero.module.css";
+import HeroText from "./HeroText.tsx";
 
 export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
@@ -43,17 +44,10 @@ export default function Hero() {
         imageSources={imageSources}
       />
 
-      <div id={styles.heroText}>
-        <h1>Discover innovative ways to decorate</h1>
-        <p>
-          We provide unmatched quality, comfort, and style for property owners
-          across the country. Our experts combine form and function in bringing
-          your vision to life. Create a room in your own style with our
-          collection and make your property a reflection of you and what you
-          love.
-        </p>
-        <a href="/shop">Shop now</a>
-      </div>
+      <HeroText
+        title="Discover innovative ways to decorate"
+        text="We provide unmatched quality, comfort, and style for property owners across the country. Our experts combine form and function in bringing your vision to life. Create a room in your own style with our collection and make your property a reflection of you and what you love."
+      />
       <NavigationButtons
         onNext={handleNextImage}
         onPrev={handlePreviousImage}
