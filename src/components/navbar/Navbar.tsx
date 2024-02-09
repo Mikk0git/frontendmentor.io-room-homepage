@@ -61,16 +61,16 @@ export default function Navbar() {
         style={{ opacity: opacityValue, display: displayValue }}
       >
         <li>
-          <a href="/"> home</a>
+          <a href={`${import.meta.env.BASE_URL}/`}> home</a>
         </li>
         <li>
-          <a href="/shop">shop</a>
+          <a href={`${import.meta.env.BASE_URL}/shop`}>shop</a>
         </li>
         <li>
-          <a href="#aboutText">about</a>
+          <a href={`${import.meta.env.BASE_URL}#aboutText`}>about</a>
         </li>
         <li>
-          <a href="/contact">contact</a>
+          <a href={`${import.meta.env.BASE_URL}/contact`}>contact</a>
         </li>
       </ul>
       {!isButtonCLicked || windowSize.innerWidth > 750 ? (
